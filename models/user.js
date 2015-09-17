@@ -78,6 +78,12 @@ UserSchema.statics.getAuthenticated = function (user, callback) {
 
                 // check if the password was a match
                 if (isMatch) {
+					var user = {
+						username: doc.username,
+						id: doc.id,
+						firstName: doc.firstName,
+						lastName: doc.lastName
+					};
 
                     // return the jwt
                     var token = jsonwebtoken.sign(doc, 'supersecret', {
